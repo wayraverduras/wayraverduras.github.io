@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayra Verduras - Verduras Cocidas Envasadas al Vacío</title>
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="Wayra Verduras - Verduras cocidas envasadas al vacío en Rosario. Mayor frescura, conservación y sabor. 100% natural, sin conservantes y listas para usar. Hacé tu pedido por WhatsApp.">
+    <meta name="keywords" content="verduras envasadas al vacio, verduras cocidas rosario, wayra verduras, viandas saludables rosario, vegetales listos para comer">
+    <meta name="author" content="Wayra Verduras">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playpen+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="wayra_logo.png">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background overlay para dar textura y profundidad -->
+    <div class="wood-bg-overlay"></div>
+
+    <!-- Header / Hero Section -->
+    <header class="hero">
+        <div class="hero-split-banner">
+            <div class="hero-logo-col">
+                <img src="wayra_logo.png" alt="Wayra Verduras Logo" class="main-logo">
+            </div>
+            <div class="hero-divider-laurels">
+                <svg class="laurel-divider" viewBox="0 0 24 100" fill="currentColor">
+                    <line x1="12" y1="5" x2="12" y2="95" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.3" />
+                    <path d="M 12 80 C 8 78, 5 73, 5 69 C 5 66, 8 66, 12 69" />
+                    <path d="M 12 80 C 16 78, 19 73, 19 69 C 19 66, 16 66, 12 69" />
+                    
+                    <path d="M 12 60 C 8 58, 5 53, 5 49 C 5 46, 8 46, 12 49" />
+                    <path d="M 12 60 C 16 58, 19 53, 19 49 C 19 46, 16 46, 12 49" />
+                    
+                    <path d="M 12 40 C 8 38, 5 33, 5 29 C 5 27, 8 27, 12 30" />
+                    <path d="M 12 40 C 16 38, 19 33, 19 29 C 19 27, 16 27, 12 30" />
+                    
+                    <path d="M 12 20 C 8 18, 5 13, 5 9 C 5 7, 8 7, 12 10" />
+                    <path d="M 12 20 C 16 18, 19 13, 19 9 C 19 7, 16 7, 12 10" />
+                    
+                    <path d="M 12 10 C 10 7, 10 3, 12 0 C 14 3, 14 7, 12 10" />
+                </svg>
+            </div>
+            <div class="hero-text-col">
+                <h1 class="hero-main-title">VERDURAS COCIDAS<br>ENVASADAS AL VACÍO</h1>
+                <p class="hero-subtitle">MAYOR FRESCURA, CONSERVACIÓN Y SABOR</p>
+            </div>
+        </div>
+        <div class="hero-intro">
+            <p class="hero-description">
+                Seleccionamos las mejores verduras, las cocinamos al punto justo y las envasamos al vacío para que mantengan todas sus propiedades, listas para tus comidas.
+            </p>
+        </div>
+    </header>
+
+    <!-- Ventajas / Beneficios -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+                <h3>100% Natural</h3>
+                <p>Sin agregados artificiales</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>Sin Conservantes</h3>
+                <p>Frescura natural intacta</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="fa-solid fa-check-double"></i>
+                </div>
+                <h3>Listas para Usar</h3>
+                <p>Abrí, calentá y serví</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper">
+                    <i class="fa-solid fa-snowflake"></i>
+                </div>
+                <h3>Fáciles de Conservar</h3>
+                <p>Mayor duración en heladera</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenedor Principal (Catálogo y Carrito lateral) -->
+    <main class="main-content">
+        <div class="content-container">
+            <!-- Filtros y Catálogo -->
+            <section class="catalog-section">
+                <div class="section-header">
+                    <h2>Nuestros Productos</h2>
+                    <div class="category-filters">
+                        <button class="filter-btn active" data-filter="all">Todos</button>
+                        <button class="filter-btn" data-filter="cocidas">Cocidas / Listas</button>
+                        <button class="filter-btn" data-filter="ralladas">Ralladas / Crudas</button>
+                        <button class="filter-btn" data-filter="legumbres">Legumbres / Otras</button>
+                    </div>
+                </div>
+
+                <!-- Grilla de Productos -->
+                <div class="products-grid" id="products-grid">
+                    <!-- Se genera dinámicamente con JavaScript -->
+                </div>
+            </section>
+
+            <!-- Sección del Carrito en pantallas grandes / Formulario de Compra -->
+            <aside class="cart-section" id="cart-sidebar">
+                <div class="cart-card">
+                    <div class="cart-header">
+                        <h2><i class="fa-solid fa-cart-shopping"></i> Tu Pedido</h2>
+                        <span class="cart-count" id="cart-count-badge">0</span>
+                    </div>
+
+                    <!-- Lista de Items en el carrito -->
+                    <div class="cart-items" id="cart-items-container">
+                        <div class="empty-cart-message">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            <p>Tu carrito está vacío.<br>Agregá algunos productos para comenzar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Totalizadores -->
+                    <div class="cart-totals-panel" id="cart-totals-panel" style="display: none;">
+                        <div class="totals-row">
+                            <span>Subtotal Productos:</span>
+                            <strong id="cart-subtotal">$0</strong>
+                        </div>
+                        
+                        <!-- Método de Entrega -->
+                        <div class="delivery-options">
+                            <label class="delivery-label">Método de Entrega:</label>
+                            <div class="delivery-radio-group">
+                                <label class="delivery-radio-card active" id="delivery-home-label">
+                                    <input type="radio" name="delivery-method" value="home" checked>
+                                    <div class="delivery-card-content">
+                                        <i class="fa-solid fa-motorcycle"></i>
+                                        <div>
+                                            <span class="option-title">Envío a Domicilio</span>
+                                            <span class="option-price">+$1.000</span>
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="delivery-radio-card" id="delivery-pickup-label">
+                                    <input type="radio" name="delivery-method" value="pickup">
+                                    <div class="delivery-card-content">
+                                        <i class="fa-solid fa-house-user"></i>
+                                        <div>
+                                            <span class="option-title">Retiro en Casa</span>
+                                            <span class="option-price">Gratis</span>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="totals-row delivery-cost-row" id="delivery-cost-row">
+                            <span>Costo de Envío:</span>
+                            <strong id="cart-delivery-cost">$1.000</strong>
+                        </div>
+                        
+                        <div class="totals-row total-final-row">
+                            <span>Total Estimado:</span>
+                            <strong id="cart-total">$0</strong>
+                        </div>
+
+                        <!-- Formulario de Cliente -->
+                        <form id="checkout-form" class="checkout-form">
+                            <h3><i class="fa-solid fa-user-pen"></i> Datos para el Pedido</h3>
+                            
+                            <div class="form-group">
+                                <label for="client-name">Nombre y Apellido *</label>
+                                <input type="text" id="client-name" placeholder="Ej. María López" required>
+                            </div>
+
+                            <div class="form-group" id="address-group">
+                                <label for="client-address">Dirección de Entrega (en Rosario) *</label>
+                                <input type="text" id="client-address" placeholder="Ej. Pellegrini 1500, Piso 2 B" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="client-notes">Notas / Aclaraciones (Opcional)</label>
+                                <textarea id="client-notes" placeholder="Ej. Tocar timbre 'B', o retirar el sábado por la mañana..." rows="2"></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-btn" id="whatsapp-submit-btn">
+                                <i class="fa-brands fa-whatsapp animate-bounce"></i> Enviar Pedido por WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer / Información de contacto -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="footer-logo-text">Wayra Verduras</span>
+                <p>Frescura natural envasada al vacío. Listas para consumir en Rosario.</p>
+            </div>
+            
+            <div class="footer-info">
+                <h3>Contacto e Información</h3>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot"></i> Rosario, Santa Fe</li>
+                    <li><i class="fa-solid fa-phone"></i> <a href="tel:3412142916">341 214 2916</a></li>
+                    <li><i class="fa-brands fa-instagram"></i> <a href="https://instagram.com/wayra.verduras" target="_blank" rel="noopener noreferrer">@wayra.verduras</a></li>
+                    <li><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/5493412142916" target="_blank" rel="noopener noreferrer">WhatsApp Directo</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Wayra Verduras. Todos los derechos reservados. Rosario, Argentina.</p>
+        </div>
+    </footer>
+
+    <!-- Botón de carrito flotante en móviles -->
+    <button class="floating-cart-btn" id="mobile-cart-toggle" aria-label="Ver carrito">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span class="cart-badge-count" id="mobile-cart-badge">0</span>
+    </button>
+
+    <!-- Modal del carrito en móviles -->
+    <div class="cart-modal-overlay" id="cart-modal-overlay">
+        <div class="cart-modal">
+            <div class="cart-modal-header">
+                <h2><i class="fa-solid fa-cart-shopping"></i> Tu Pedido</h2>
+                <button class="close-modal-btn" id="close-cart-modal">&times;</button>
+            </div>
+            <div class="cart-modal-body" id="cart-modal-body-content">
+                <!-- Se copia dinámicamente el contenido del carrito -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Principal -->
+    <script src="app.js"></script>
+</body>
+</html>
