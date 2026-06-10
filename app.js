@@ -93,20 +93,20 @@ const products = [
     {
         id: 11,
         name: "Brócoli",
-        subtitle: "Brócoli fresco cocido al vapor (¡Precio Especial!)",
+        subtitle: "Brócoli fresco cocido al vapor",
         category: "cocidas",
-        badge: "Precio Especial",
+        badge: "Cocido",
         image: "brocoli.jpg",
-        prices: { "250g": 4000, "500g": 8000 } // Special price
+        prices: { "250g": 4000, "500g": 8000 }
     },
     {
         id: 12,
         name: "Coliflor",
-        subtitle: "Flores de coliflor tiernas al vapor (¡Precio Especial!)",
+        subtitle: "Flores de coliflor tiernas al vapor",
         category: "cocidas",
-        badge: "Precio Especial",
+        badge: "Cocida",
         image: "coliflor.jpg",
-        prices: { "250g": 4000, "500g": 8000 } // Special price
+        prices: { "250g": 4000, "500g": 8000 }
     },
     {
         id: 13,
