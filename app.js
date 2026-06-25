@@ -124,6 +124,7 @@ let cart = JSON.parse(localStorage.getItem('wayra_cart')) || [];
 
 // Teléfono de contacto (WhatsApp)
 const WHATSAPP_PHONE = "5493412142916"; // Formato internacional para Argentina/Rosario (549 + 341...)
+const DELIVERY_FEE = 2000; // Costo de envío a domicilio
 
 // Inicialización de la aplicación
 document.addEventListener("DOMContentLoaded", () => {
@@ -308,7 +309,7 @@ function updateCart() {
     
     // Obtener costo de envío actual
     const deliveryMethod = document.querySelector('input[name="delivery-method"]:checked').value;
-    const deliveryCost = deliveryMethod === "home" ? 1000 : 0;
+    const deliveryCost = deliveryMethod === "home" ? DELIVERY_FEE : 0;
     const grandTotal = subtotal + deliveryCost;
 
     // Actualizar montos en la vista
@@ -390,7 +391,7 @@ function renderCartList(containerId, isModal = false) {
     if (isModal) {
         const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
         const deliveryMethod = document.querySelector('input[name="delivery-method"]:checked').value;
-        const deliveryCost = deliveryMethod === "home" ? 1000 : 0;
+        const deliveryCost = deliveryMethod === "home" ? DELIVERY_FEE : 0;
         const grandTotal = subtotal + deliveryCost;
         const paymentRadio = document.querySelector('input[name="payment-method"]:checked');
         const paymentMethod = paymentRadio ? paymentRadio.value : 'cash';
@@ -412,7 +413,7 @@ function renderCartList(containerId, isModal = false) {
                             <i class="fa-solid fa-motorcycle"></i>
                             <div>
                                 <span class="option-title">Envío a Domicilio</span>
-                                <span class="option-price">+$1.000</span>
+                                <span class="option-price">+$${DELIVERY_FEE.toLocaleString('es-AR')}</span>
                             </div>
                         </div>
                     </label>
@@ -734,7 +735,7 @@ function sendOrderViaWhatsApp() {
     }
 
     const deliveryMethod = document.querySelector('input[name="delivery-method"]:checked').value;
-    const deliveryCost = deliveryMethod === "home" ? 1000 : 0;
+    const deliveryCost = deliveryMethod === "home" ? DELIVERY_FEE : 0;
     const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     const grandTotal = subtotal + deliveryCost;
 
@@ -750,7 +751,7 @@ function sendOrderViaWhatsApp() {
     text += `\n💵 *Subtotal Productos:* $${subtotal.toLocaleString('es-AR')}\n`;
     
     if (deliveryMethod === "home") {
-        text += `🚚 *Entrega:* Envío a domicilio ($1.000)\n`;
+        text += `🚚 *Entrega:* Envío a domicilio ($${DELIVERY_FEE.toLocaleString('es-AR')})\n`;
         text += `📍 *Dirección:* ${address}, Rosario\n`;
     } else {
         text += `🏠 *Entrega:* Retiro en casa ($0)\n`;
