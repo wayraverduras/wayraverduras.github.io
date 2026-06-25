@@ -159,6 +159,31 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="delivery-label">Método de Pago *</label>
+                                <div class="payment-radio-group">
+                                    <label class="payment-radio-card active" id="payment-cash-label">
+                                        <input type="radio" name="payment-method" value="cash" checked required>
+                                        <div class="payment-card-content">
+                                            <i class="fa-solid fa-money-bill-1-wave"></i>
+                                            <div>
+                                                <span class="payment-option-title">Efectivo</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="payment-radio-card" id="payment-transfer-label">
+                                        <input type="radio" name="payment-method" value="transfer" required>
+                                        <div class="payment-card-content">
+                                            <i class="fa-solid fa-building-columns"></i>
+                                            <div>
+                                                <span class="payment-option-title">Transferencia</span>
+                                                <span class="payment-option-subtitle">alias: wayra.verduras</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="client-notes">Notas / Aclaraciones (Opcional)</label>
                                 <textarea id="client-notes" placeholder="Ej. Tocar timbre 'B', o retirar el sábado por la mañana..." rows="2"></textarea>
                             </div>

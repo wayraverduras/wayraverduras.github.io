@@ -800,6 +800,66 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--accent-green-light);
 }
 
+
+/* Payment Methods */
+.payment-radio-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.payment-radio-card {
+    flex: 1;
+    border: 1px solid #d4ded6;
+    background: #eef2ed;
+    border-radius: var(--border-radius-sm);
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.payment-radio-card input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.payment-card-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.payment-card-content i {
+    font-size: 1.3rem;
+    color: var(--primary-green);
+}
+
+.payment-card-content .payment-option-title {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.payment-card-content .payment-option-subtitle {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.payment-radio-card.active {
+    background-color: var(--primary-green);
+    color: var(--text-white);
+    border-color: var(--primary-green);
+    box-shadow: 0 4px 10px rgba(17, 63, 35, 0.2);
+}
+
+.payment-radio-card.active i,
+.payment-radio-card.active .payment-option-subtitle {
+    color: var(--accent-green-light);
+}
+
 /* Checkout Form */
 .checkout-form {
     border-top: 1px solid #d4ded6;
@@ -1248,7 +1308,8 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.75rem;
     }
     
-    .delivery-radio-group {
+    .delivery-radio-group,
+    .payment-radio-group {
         flex-direction: column;
         gap: 8px;
     }

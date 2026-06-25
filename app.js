@@ -392,6 +392,8 @@ function renderCartList(containerId, isModal = false) {
         const deliveryMethod = document.querySelector('input[name="delivery-method"]:checked').value;
         const deliveryCost = deliveryMethod === "home" ? 1000 : 0;
         const grandTotal = subtotal + deliveryCost;
+        const paymentRadio = document.querySelector('input[name="payment-method"]:checked');
+        const paymentMethod = paymentRadio ? paymentRadio.value : 'cash';
 
         const modalTotals = document.createElement("div");
         modalTotals.className = "cart-totals-panel";
@@ -448,6 +450,31 @@ function renderCartList(containerId, isModal = false) {
                 <div class="form-group" id="modal-address-group" style="display: ${deliveryMethod === 'home' ? 'block' : 'none'}">
                     <label for="modal-client-address">Dirección de Entrega (en Rosario) *</label>
                     <input type="text" id="modal-client-address" placeholder="Ej. Pellegrini 1500, Piso 2 B" value="${document.getElementById('client-address').value}" ${deliveryMethod === 'home' ? 'required' : ''}>
+                </div>
+
+                <div class="form-group">
+                    <label class="delivery-label">Método de Pago *</label>
+                    <div class="payment-radio-group">
+                        <label class="payment-radio-card ${paymentMethod === 'cash' ? 'active' : ''}" id="modal-payment-cash-label">
+                            <input type="radio" name="modal-payment-method" value="cash" ${paymentMethod === 'cash' ? 'checked' : ''} required>
+                            <div class="payment-card-content">
+                                <i class="fa-solid fa-money-bill-1-wave"></i>
+                                <div>
+                                    <span class="payment-option-title">Efectivo</span>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="payment-radio-card ${paymentMethod === 'transfer' ? 'active' : ''}" id="modal-payment-transfer-label">
+                            <input type="radio" name="modal-payment-method" value="transfer" ${paymentMethod === 'transfer' ? 'checked' : ''} required>
+                            <div class="payment-card-content">
+                                <i class="fa-solid fa-building-columns"></i>
+                                <div>
+                                    <span class="payment-option-title">Transferencia</span>
+                                    <span class="payment-option-subtitle">alias: wayra.verduras</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -529,6 +556,33 @@ function setupEventListeners() {
     homeMethod.addEventListener("change", () => handleDeliveryChange("home"));
     pickupMethod.addEventListener("change", () => handleDeliveryChange("pickup"));
 
+    // Control de pago en la barra lateral (Desktop)
+    const cashPayment = document.querySelector('input[name="payment-method"][value="cash"]');
+    const transferPayment = document.querySelector('input[name="payment-method"][value="transfer"]');
+
+    const handlePaymentChange = (method) => {
+        document.getElementById("payment-cash-label").classList.toggle("active", method === "cash");
+        document.getElementById("payment-transfer-label").classList.toggle("active", method === "transfer");
+        // Sincronizar con el modal si estuviera abierto
+        const modalCashLabel = document.getElementById("modal-payment-cash-label");
+        const modalTransferLabel = document.getElementById("modal-payment-transfer-label");
+        if (modalCashLabel && modalTransferLabel) {
+            modalCashLabel.classList.toggle("active", method === "cash");
+            modalTransferLabel.classList.toggle("active", method === "transfer");
+            const modalCashRadio = document.querySelector('input[name="modal-payment-method"][value="cash"]');
+            const modalTransferRadio = document.querySelector('input[name="modal-payment-method"][value="transfer"]');
+            if (modalCashRadio && modalTransferRadio) {
+                if (method === "cash") modalCashRadio.checked = true;
+                else modalTransferRadio.checked = true;
+            }
+        }
+    };
+
+    if (cashPayment && transferPayment) {
+        cashPayment.addEventListener("change", () => handlePaymentChange("cash"));
+        transferPayment.addEventListener("change", () => handlePaymentChange("transfer"));
+    }
+
     // Guardar cambios sincrónicos de entradas entre barra lateral y modal
     syncInputsBetweenSidebarAndModal();
 
@@ -603,6 +657,23 @@ function setupModalFormEvents() {
     if (modalHomeRadio && modalPickupRadio) {
         modalHomeRadio.addEventListener("change", () => handleModalDeliveryChange("home"));
         modalPickupRadio.addEventListener("change", () => handleModalDeliveryChange("pickup"));
+    }
+
+    const modalCashRadio = document.querySelector('input[name="modal-payment-method"][value="cash"]');
+    const modalTransferRadio = document.querySelector('input[name="modal-payment-method"][value="transfer"]');
+
+    const handleModalPaymentChange = (method) => {
+        // Actualizar el radio button original de la barra lateral para sincronizar
+        const originalRadio = document.querySelector(`input[name="payment-method"][value="${method}"]`);
+        if (originalRadio) {
+            originalRadio.checked = true;
+            originalRadio.dispatchEvent(new Event("change"));
+        }
+    };
+
+    if (modalCashRadio && modalTransferRadio) {
+        modalCashRadio.addEventListener("change", () => handleModalPaymentChange("cash"));
+        modalTransferRadio.addEventListener("change", () => handleModalPaymentChange("transfer"));
     }
 
     // Sincronizar hacia atrás desde el modal hacia el sidebar
@@ -683,6 +754,15 @@ function sendOrderViaWhatsApp() {
         text += `📍 *Dirección:* ${address}, Rosario\n`;
     } else {
         text += `🏠 *Entrega:* Retiro en casa ($0)\n`;
+    }
+
+    // Método de pago
+    const paymentMethodRadio = document.querySelector('input[name="payment-method"]:checked');
+    const paymentMethod = paymentMethodRadio ? paymentMethodRadio.value : 'cash';
+    if (paymentMethod === "transfer") {
+        text += `💳 *Método de Pago:* Transferencia (alias: wayra.verduras)\n`;
+    } else {
+        text += `💵 *Método de Pago:* Efectivo\n`;
     }
 
     text += `👤 *Cliente:* ${name}\n`;
