@@ -844,7 +844,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .payment-card-content .payment-option-subtitle {
     display: inline-block;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: #4a5d4e;
     background-color: rgba(0, 0, 0, 0.05);
