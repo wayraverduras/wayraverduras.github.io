@@ -12,9 +12,9 @@ const products = [
     {
         id: 2,
         name: "Calabaza",
-        subtitle: "Cubos tiernos al vapor, ideales para puré o ensalada",
+        subtitle: "Rodajas de calabaza al horno",
         category: "cocidas",
-        badge: "Cocida",
+        badge: "Cocida al Horno",
         image: "calabaza.jpg",
         prices: { "250g": 3000, "500g": 5000 }
     },
